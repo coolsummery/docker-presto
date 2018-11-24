@@ -2,7 +2,10 @@
 Dockerized Presto Server.
 
 ###Build
-docker build -t mozdata/docker-presto:${VERSION} .
+docker build -t thiagodiogo/docker-presto:${VERSION} .
 
 ###Docker Hub
-docker push mozdata/docker-presto:${VERSION}
+docker push thiagodiogo/docker-presto:${VERSION}
+
+
+Based on: mozdata/docker-presto

@@ -1,7 +1,7 @@
 FROM airdock/oracle-jdk:1.8
-MAINTAINER ra.vitillo@gmail.com
+MAINTAINER thiagodiogo@gmail.com
 
-ENV PRESTO_VERSION 0.151
+ENV PRESTO_VERSION 0.214
 ENV DOCKERIZE_VERSION v0.2.0
 
 RUN apt-get update && \
@@ -11,7 +11,7 @@ RUN apt-get update && \
     mkdir /opt/presto && \
     tar -zxvf /tmp/presto.tar.gz -C /opt/presto --strip-components=1 && \
     rm /tmp/presto.tar.gz && \
-    wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.151/presto-cli-0.151-executable.jar -O /usr/local/bin/presto-cli && \
+    wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/$PRESTO_VERSION/presto-cli-$PRESTO_VERSION-executable.jar -O /usr/local/bin/presto-cli && \
     chmod +x /usr/local/bin/presto-cli && \
     wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
