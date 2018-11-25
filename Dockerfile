@@ -1,12 +1,23 @@
-FROM airdock/oracle-jdk:1.8
+FROM anapsix/alpine-java:8u192b12_jdk_unlimited
+
 MAINTAINER thiagodiogo@gmail.com
 
 ENV PRESTO_VERSION 0.214
 ENV DOCKERIZE_VERSION v0.2.0
 
-RUN apt-get update && \
-    apt-get install -y python python-pip wget less && \
-    pip install crudini && \
+RUN apk add --update \
+    python \
+    python-dev \
+    py-pip \
+    build-base \
+    wget \
+    perl \
+    less \
+    && rm -rf /var/cache/apk/*
+
+RUN apk add --no-cache util-linux
+
+RUN pip install crudini && \
     wget https://repo1.maven.org/maven2/com/facebook/presto/presto-server/$PRESTO_VERSION/presto-server-$PRESTO_VERSION.tar.gz -O /tmp/presto.tar.gz && \
     mkdir /opt/presto && \
     tar -zxvf /tmp/presto.tar.gz -C /opt/presto --strip-components=1 && \

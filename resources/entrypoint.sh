@@ -21,10 +21,25 @@ function configure() {
     done
 }
 
+# Generating new ID to the new presto node
+export NODE_CONF_NODE_ID=`uuidgen`
+
 configure /opt/presto/etc/config.properties CONFIG_CONF
 configure /opt/presto/etc/log.properties LOG_CONF
 configure /opt/presto/etc/node.properties NODE_CONF
 configure /opt/presto/etc/catalog/hive.properties HIVE_CONF
 dockerize -template /opt/presto/etc/jvm.config.template:/opt/presto/etc/jvm.config
+
+echo "/opt/presto/etc/config.properties:"
+cat /opt/presto/etc/config.properties
+
+echo "/opt/presto/etc/node.properties:"
+cat /opt/presto/etc/node.properties
+
+echo "/opt/presto/etc/catalog/hive.properties:"
+cat /opt/presto/etc/catalog/hive.properties
+
+echo "/opt/presto/etc/jvm.properties:"
+cat /opt/presto/etc/jvm.properties
 
 exec $@
