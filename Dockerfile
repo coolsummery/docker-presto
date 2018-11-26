@@ -9,6 +9,7 @@ RUN apk add --update \
     python \
     python-dev \
     py-pip \
+    curl \
     build-base \
     wget \
     perl \
@@ -26,7 +27,6 @@ RUN pip install crudini && \
     chmod +x /usr/local/bin/presto-cli && \
     wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-
 
 COPY resources/etc/* /opt/presto/etc/
 ADD resources/etc/catalog/hive.properties /opt/presto/etc/catalog/hive.properties
