@@ -39,7 +39,7 @@ cat /opt/presto/etc/node.properties
 echo "/opt/presto/etc/catalog/hive.properties:"
 cat /opt/presto/etc/catalog/hive.properties
 
-echo "/opt/presto/etc/jvm.properties:"
-cat /opt/presto/etc/jvm.properties
+echo "/opt/presto/etc/jvm.config:"
+cat /opt/presto/etc/jvm.config
 
 exec $@

@@ -1,5 +1,6 @@
 -server
 -Xmx{{ default .Env.JVM_CONF_XMX "16G" }}
+-Xms{{ default .Env.JVM_CONF_XMS "4G" }}
 -XX:+UseG1GC
 -XX:G1HeapRegionSize=32M
 -XX:+UseGCOverheadLimit
